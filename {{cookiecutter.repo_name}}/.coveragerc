@@ -1,5 +1,6 @@
 [run]
 source = {{cookiecutter.repo_name}}
+omit = {{cookiecutter.repo_name}}/__main__.py
 
 [report]
 exclude_lines =

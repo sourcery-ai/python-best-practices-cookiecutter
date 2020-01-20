@@ -1,0 +1,33 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: {python_version}
+
+    - name: Install dependencies with pipenv
+      run: |
+        pip install pipenv
+        pipenv install --deploy --dev
+
+    - run: pipenv run isort --recursive --diff
+    - run: pipenv run black --check .
+    - run: pipenv run flake8
+    - run: pipenv run mypy
+    - run: pipenv run pytest --cov --cov-fail-under=100
+
+  docker-image:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build docker image
+      run: docker build .
