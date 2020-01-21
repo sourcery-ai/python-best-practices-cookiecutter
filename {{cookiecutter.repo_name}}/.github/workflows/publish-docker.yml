@@ -9,13 +9,13 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-    - name: Publish to Dockerhub
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: {{cookiecutter.dockerhub_username}}/{{cookiecutter.repo_name}}
-        {% raw -%}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        {%- endraw %}
+      - name: Publish to Dockerhub
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: {{cookiecutter.dockerhub_username}}/{{cookiecutter.repo_name}}
+          {% raw -%}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          {%- endraw %}
