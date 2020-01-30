@@ -20,7 +20,7 @@ python3 -m pipx ensurepath
 pipx install pipenv
 
 # Use cookiecutter to create project from this template
-pipx run cookiecutter gh:sourceryai/python-best-practices-cookiecutter
+pipx run cookiecutter gh:sourcery-ai/python-best-practices-cookiecutter
 
 # Enter project directory
 cd <repo_name>
