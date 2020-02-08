@@ -15,14 +15,7 @@ def set_python_version():
 
 
 def remove_docker():
-    file_names = ["Dockerfile", ".dockerignore", ".github/workflows/publish_docker.yml"]
-    for file_name in file_names:
-        if os.path.exists(file_name):
-            os.remove(file_name)
-
-
-def remove_publish_docker():
-    file_names = [".github/workflows/publish_docker.yml"]
+    file_names = ["Dockerfile", ".dockerignore"]
     for file_name in file_names:
         if os.path.exists(file_name):
             os.remove(file_name)
@@ -37,22 +30,11 @@ def main():
     set_python_version()
 
     docker = "{{ cookiecutter.docker }}".lower() == "y"
-    dockerhub_username = "{{ cookiecutter.dockerhub_username }}"
 
     if not docker:
         remove_docker()
 
-    if not dockerhub_username:
-        remove_publish_docker()
-
     print(SUCCESS + "Project successfully initialized" + TERMINATOR)
-    if docker and dockerhub_username:
-        print(
-            INFO
-            + "Once you push to GitHub, add DOCKER_USERNAME and DOCKER_PASSWORD secrets to the repo\n"
-            + 'or else the "Publish docker image" GitHub action will fail'
-            + TERMINATOR
-        )
 
 
 if __name__ == "__main__":
