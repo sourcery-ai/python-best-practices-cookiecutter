@@ -14,13 +14,6 @@ def set_python_version():
             f.write(contents)
 
 
-def remove_docker():
-    file_names = ["Dockerfile", ".dockerignore"]
-    for file_name in file_names:
-        if os.path.exists(file_name):
-            os.remove(file_name)
-
-
 SUCCESS = "\x1b[1;32m"
 INFO = "\x1b[1;33m"
 TERMINATOR = "\x1b[0m"
@@ -28,12 +21,6 @@ TERMINATOR = "\x1b[0m"
 
 def main():
     set_python_version()
-
-    docker = "{{ cookiecutter.docker }}".lower() == "y"
-
-    if not docker:
-        remove_docker()
-
     print(SUCCESS + "Project successfully initialized" + TERMINATOR)
 
 
