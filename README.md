@@ -10,7 +10,7 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 - Linting with [flake8](http://flake8.pycqa.org/en/latest/)
 - Git hooks that run all the above with [pre-commit](https://pre-commit.com/)
 - Deployment ready with [Docker](https://docker.com/)
-- Run all the above in Continuous Integration with [GitHub Actions](https://github.com/features/actions)
+- Continuous Integration with [GitHub Actions](https://github.com/features/actions)
 
 ## Quickstart
 ```sh
