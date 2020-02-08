@@ -9,8 +9,8 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 - Static typing with [mypy](http://mypy-lang.org/)
 - Linting with [flake8](http://flake8.pycqa.org/en/latest/)
 - Git hooks that run all the above with [pre-commit](https://pre-commit.com/)
-- GitHub action that runs all the above
-- Publish to [Docker Hub](https://hub.docker.com)
+- Deployment ready with [Docker](https://docker.com/)
+- Run all the above in Continuous Integration with [GitHub Actions](https://github.com/features/actions)
 
 ## Quickstart
 ```sh
@@ -37,5 +37,3 @@ pipenv install --dev
 pipenv run pre-commit install -t pre-commit
 pipenv run pre-commit install -t pre-push
 ```
-
-## Add Sourcery GitHub app
