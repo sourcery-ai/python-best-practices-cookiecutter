@@ -9,6 +9,8 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 - Static typing with [mypy](http://mypy-lang.org/)
 - Linting with [flake8](http://flake8.pycqa.org/en/latest/)
 - Git hooks that run all the above with [pre-commit](https://pre-commit.com/)
+- Deployment ready with [Docker](https://docker.com/)
+- Continuous Integration with [GitHub Actions](https://github.com/features/actions)
 
 ## Quickstart
 ```sh

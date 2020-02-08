@@ -30,7 +30,7 @@ repos:
     language: system
     entry: pipenv run mypy
     types: [python]
-    pass_filenames: false
+    require_serial: true
 
   - id: pytest
     name: pytest
