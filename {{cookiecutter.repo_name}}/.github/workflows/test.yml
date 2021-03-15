@@ -26,7 +26,10 @@ jobs:
       - run: pipenv run black --check .
       - run: pipenv run flake8
       - run: pipenv run mypy
-      - run: pipenv run pytest --cov --cov-fail-under=100
+      - run: pipenv run pytest --cov --cov-report=xml
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v1
 
   docker-image:
     runs-on: ubuntu-latest
