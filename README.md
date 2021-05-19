@@ -11,6 +11,7 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 - Git hooks that run all the above with [pre-commit](https://pre-commit.com/)
 - Deployment ready with [Docker](https://docker.com/)
 - Continuous Integration with [GitHub Actions](https://github.com/features/actions)
+- Code coverage with [Codecov](https://codecov.io)
 
 ## Quickstart
 ```sh
