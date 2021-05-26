@@ -4,5 +4,6 @@
     "author_name": "Jonathon Vandezande",
     "user_name": "jevandezande",
     "project_url": "git@github.com:{{cookiecutter.user_name}}/{{cookiecutter.repo_name}}",
-    "line_length": "120"
+    "line_length": "120",
+    "license": "MIT"
 }

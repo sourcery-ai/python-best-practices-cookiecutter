@@ -1,4 +1,8 @@
 # Python Best Practices Cookiecutter
+[![License](https://img.shields.io/github/license/jevandezande/python-best-practices-cookiecutter)](https://github.com/jevandezande/python-best-practices-cookiecutter/blob/master/LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jevandezande/python-best-practices-cookiecutter/Test)](https://github.com/jevandezande/python-best-practices-cookiecutter/actions/)
+[![Codecov](https://img.shields.io/codecov/c/github/{{cookiecutter.user_name}}/{{cookiecutter.repo_name}})](https://app.codecov.io/gh/jevandezande/python-best-practices-cookiecutter/)
 
 Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template as described in this [blogpost](https://sourcery.ai/blog/python-best-practices/).
 
@@ -13,7 +17,10 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 - Continuous Integration with [GitHub Actions](https://github.com/features/actions)
 - Code coverage with [Codecov](https://codecov.io)
 
-## Quickstart
+
+## Setup
+Most of the setup steps are automated, but one can also follow a flow similar to the below.
+
 ```sh
 # Install pipx if pipenv and cookiecutter are not installed
 python3 -m pip install pipx
