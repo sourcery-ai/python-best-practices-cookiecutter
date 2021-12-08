@@ -1,7 +1,0 @@
-# Ignore everything
-**
-
-# ... except for dependencies and source
-!Pipfile
-!Pipfile.lock
-!{{cookiecutter.repo_name}}

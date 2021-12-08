@@ -30,15 +30,3 @@ jobs:
 
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v1
-
-  docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build docker image
-        run: docker build . -t {{cookiecutter.repo_name}}:test
-
-      - name: Smoke test docker image
-        run: |
-          docker run --rm {{cookiecutter.repo_name}}:test 10
