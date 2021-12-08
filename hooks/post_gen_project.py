@@ -37,7 +37,7 @@ def set_license(license: Optional[str] = "MIT"):
     if (license := license.lower()) not in licenses:
         raise ValueError(f"{license=} is not available yet. Please select from:\n    {"    \n".join(licenses)}")
 
-    license_path = os.path.expanduser(f"~/.cookiecutters/pb/licenses/{license}")
+    license_path = os.path.expanduser(f"~/.cookiecutters/python-best-practices/licenses/{license}")
     print(f"Set {license=}")
     shutil.copy(license_path, "{{cookiecutter.repo_name}}/LICENSE")
 
