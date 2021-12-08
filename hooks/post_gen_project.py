@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import os
+import shutil
 import sys
 from subprocess import check_call
-
+from typing import Optional
 
 licenses = {
     "apache-2",
@@ -28,32 +30,30 @@ def set_python_version():
             f.write(contents)
 
 
-def set_license(license: Optional[str] ="MIT"):
-    if license is None:
+def set_license(license: Optional[str] = "MIT"):
+    if not license:
         return
-    license = license.lower()
-    if license not in licenses:
-        raise ValueError(f"{license=} is not available yet")
-    shutil.copy(f"licenses/{license}", "{{cookiecutter.repo_name}}/LICENSE")
+
+    if (license := license.lower()) not in licenses:
+        raise ValueError(f"{license=} is not available yet. Please select from:\n    {"    \n".join(licenses)}")
+
+    license_path = os.path.expanduser(f"~/.cookiecutters/pb/licenses/{license}")
+    print(f"Set {license=}")
+    shutil.copy(license_path, "{{cookiecutter.repo_name}}/LICENSE")
 
 
 def git_init():
-    check_call("git init", shell=True)
+    check_call("git init".split())
 
 
 def install_dev():
-    check_call("pipenv install --dev", shell=True)
+    check_call("pipenv install --dev".split())
     print("Initialized dev packages")
 
 
 def git_hooks():
-    check_call(
-        """\
-pipenv run pre-commit install -t pre-commit
-pipenv run pre-commit install -t pre-push
-""",
-        shell=True,
-    )
+    check_call("pipenv run pre-commit install -t pre-commit".split())
+    check_call("pipenv run pre-commit install -t pre-push".split())
     print("Setup git hooks")
 
 
