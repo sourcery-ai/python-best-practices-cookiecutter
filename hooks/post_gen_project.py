@@ -34,14 +34,36 @@ def set_license(license: Optional[str] = "MIT"):
         return
 
     if (license := license.lower()) not in LICENSES:
-        raise ValueError(f"{license=} is not available yet. Please select from:" + "\n    " + "\n    ".join(LICENSES))
+        raise ValueError(
+            f"{license=} is not available yet. Please select from:"
+            + "\n    "
+            + "\n    ".join(LICENSES)
+        )
 
-    license_path = os.path.expanduser(f"~/.cookiecutters/python-best-practices/licenses/{license}")
+    license_path = os.path.expanduser(
+        f"~/.cookiecutters/python-best-practices/licenses/{license}"
+    )
     shutil.copy(license_path, "{{cookiecutter.repo_name}}/LICENSE")
 
 
 def git_init():
     check_call("git init".split())
+
+
+def update_pipfile():
+    with open("Pipfile") as f:
+        splitter = "," if "," in "{{cookiecutter.pip_packages}}" else None
+        replacement = "\n".join("{{cookiecutter.pip_packages}}".split(splitter))
+        contents = f.read().replace(r"{pip_packages}", replacement)
+
+        splitter = "," if "," in "{{cookiecutter.pip_dev_packages}}" else None
+        replacement = "\n".join("{{cookiecutter.pip_dev_packages}}".split(splitter))
+        contents = contents.replace(r"{pip_dev_packages}", replacement)
+
+    with open("Pipfile", "w") as f:
+        f.write(contents)
+
+    check_call("pipenv update".split())
 
 
 def install_dev():
@@ -63,6 +85,7 @@ def main():
     set_python_version()
     set_license("{{cookiecutter.license}}")
     git_init()
+    update_pipfile()
     install_dev()
     git_hooks()
 

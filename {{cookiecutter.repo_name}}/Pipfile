@@ -7,12 +7,14 @@ verify_ssl = true
 python_version = "{python_version}"
 
 [packages]
+{pip_packages}
 
 [dev-packages]
-black = "==20.8b1"
+black = "==21.12b0"
 flake8 = "*"
 isort = "*"
 mypy = "*"
 pre-commit = "*"
 pytest = "*"
 pytest-cov = "*"
+{pip_dev_packages}
