@@ -24,7 +24,7 @@ def set_python_version():
 
     for file_name in file_names:
         with open(file_name) as f:
-            contents = f.read().replace(r"{python_version}", python_version)
+            contents = f.read().replace("{python_version}", python_version)
         with open(file_name, "w") as f:
             f.write(contents)
 
@@ -52,14 +52,9 @@ def git_init():
 
 def update_pipfile():
     with open("Pipfile") as f:
-        splitter = "," if "," in "{{cookiecutter.pip_packages}}" else None
-        replacement = "\n".join("{{cookiecutter.pip_packages}}".split(splitter))
-        contents = f.read().replace(r"{pip_packages}", replacement)
-
-        splitter = "," if "," in "{{cookiecutter.pip_dev_packages}}" else None
-        replacement = "\n".join("{{cookiecutter.pip_dev_packages}}".split(splitter))
-        contents = contents.replace(r"{pip_dev_packages}", replacement)
-
+        # Extra space and .strip() prevents issues with quotes
+        contents = f.read().replace("{pip_packages}", """{{cookiecutter.pip_packages}} """.strip())
+        contents = contents.replace("{pip_dev_packages}", """{{cookiecutter.pip_packages}} """.strip())
     with open("Pipfile", "w") as f:
         f.write(contents)
 
