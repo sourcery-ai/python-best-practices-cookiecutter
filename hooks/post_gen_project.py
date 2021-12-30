@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import shutil
 import sys
+from datetime import datetime
 from subprocess import check_call
 from typing import Optional
 
@@ -40,10 +41,14 @@ def set_license(license: Optional[str] = "MIT"):
             + "\n    ".join(LICENSES)
         )
 
-    license_path = os.path.expanduser(
-        f"~/.cookiecutters/python-best-practices/licenses/{license}"
-    )
-    shutil.copy(license_path, "{{cookiecutter.repo_name}}/LICENSE")
+    license_path = os.path.expanduser(f"~/.cookiecutters/python-best-practices/licenses/{license}")
+    shutil.copy(license_path, "LICENSE")
+
+    with open("LICENSE") as f:
+        contents = f.read().replace("{year}", f"{datetime.now().year}")
+        contents = contents.replace("{author_name}", "{{cookiecutter.author_name}}")
+    with open("LICENSE", "w") as f:
+        f.write(contents)
 
 
 def git_init():
@@ -54,7 +59,9 @@ def update_pipfile():
     with open("Pipfile") as f:
         # Extra space and .strip() prevents issues with quotes
         contents = f.read().replace("{pip_packages}", """{{cookiecutter.pip_packages}} """.strip())
-        contents = contents.replace("{pip_dev_packages}", """{{cookiecutter.pip_packages}} """.strip())
+        contents = contents.replace(
+            "{pip_dev_packages}", """{{cookiecutter.pip_packages}} """.strip()
+        )
     with open("Pipfile", "w") as f:
         f.write(contents)
 
