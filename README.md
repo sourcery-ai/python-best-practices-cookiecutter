@@ -29,18 +29,12 @@ python3 -m pipx ensurepath
 pipx install pipenv
 
 # Use cookiecutter to create project from this template
-pipx run cookiecutter gh:sourcery-ai/python-best-practices-cookiecutter
-
-# Enter project directory
-cd <repo_name>
-
-# Initialise git repo
-git init
-
-# Install dependencies
-pipenv install --dev
-
-# Setup pre-commit and pre-push hooks
-pipenv run pre-commit install -t pre-commit
-pipenv run pre-commit install -t pre-push
+pipx run cookiecutter gh:jevandezande/python-best-practices-cookiecutter
 ```
+
+
+The cookiecutter will auotmatically
+- Enter project directory
+- Initialise git repo
+- Install dependencies
+- Setup pre-commit and pre-push hooks
