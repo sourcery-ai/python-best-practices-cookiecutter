@@ -44,6 +44,6 @@ repos:
     name: pytest
     stages: [push]
     language: system
-    entry: pipenv run pytest --cov --cov-fail-under=100
+    entry: pipenv run pytest --cov
     types: [python]
     pass_filenames: false

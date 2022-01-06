@@ -26,16 +26,7 @@ jobs:
       - run: pipenv run black --check .
       - run: pipenv run flake8
       - run: pipenv run mypy
-      - run: pipenv run pytest --cov --cov-fail-under=100
+      - run: pipenv run pytest --cov --cov-report=xml
 
-  docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build docker image
-        run: docker build . -t {{cookiecutter.repo_name}}:test
-
-      - name: Smoke test docker image
-        run: |
-          docker run --rm {{cookiecutter.repo_name}}:test 10
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v1
