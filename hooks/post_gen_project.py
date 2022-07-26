@@ -18,7 +18,6 @@ def remove_main_if_lib():
     main_file_path = os.path.join('{{ cookiecutter.repo_name }}', '__main__.py')
     if not (is_lib == "y" or is_lib == "Y"):
         os.remove(main_file_path)
-        print(main_file_path)
 
 SUCCESS = "\x1b[1;32m"
 INFO = "\x1b[1;33m"
