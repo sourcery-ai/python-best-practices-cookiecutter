@@ -9,7 +9,7 @@ python_version = "{python_version}"
 [packages]
 
 [dev-packages]
-black = "==20.8b1"
+black = "==22.3.0"
 flake8 = "*"
 isort = "*"
 mypy = "*"
