@@ -30,6 +30,9 @@ cd <repo_name>
 # Initialise git repo
 git init
 
+# Activate shell for this repo
+pipenv shell
+
 # Install dependencies
 pipenv install --dev
 
